@@ -1,0 +1,176 @@
+﻿// cơ sở dữ liệu
+CREATE DATABASE CuaHangPhanMemMayTinh;
+GO
+
+USE CuaHangPhanMemMayTinh;
+GO
+CREATE TABLE HangSanXuat (
+    MaHSX NVARCHAR(20) PRIMARY KEY,       
+    TenHSX NVARCHAR(100) NOT NULL   
+)
+CREATE TABLE LoaiMay (
+    MaLoaiMay NVARCHAR(20) PRIMARY KEY,
+    TenLoaiMay NVARCHAR(100) NOT NULL
+)
+CREATE TABLE CPU (
+    MaCPU NVARCHAR(20) PRIMARY KEY,
+    TenCPU NVARCHAR(100) NOT NULL,
+    TocDo NVARCHAR(50),
+    Socket NVARCHAR(50),
+    MoTa NVARCHAR(255),
+    MaHSX NVARCHAR(20) NOT NULL,
+    FOREIGN KEY (MaHSX) REFERENCES HangSanXuat(MaHSX),
+    CONSTRAINT CK_CPU_TocDo CHECK (TocDo IN ('2.0GHz', '3.0GHz', '4.0GHz'))
+)
+CREATE TABLE RAM (
+    MaRAM NVARCHAR(20) PRIMARY KEY,
+    TenRAM NVARCHAR(100) NOT NULL,
+    Bus INT CHECK (Bus >= 0),
+    DungLuong INT CHECK (DungLuong >=0),
+    MaHSX NVARCHAR(20) NOT NULL, 
+    MoTa NVARCHAR(225),
+    FOREIGN KEY (MaHSX) REFERENCES HangSanXuat(MaHSX)
+)
+CREATE TABLE Mainboard (
+    MaMainboard NVARCHAR(20) PRIMARY KEY,
+    TenMainboard NVARCHAR(100) NOT NULL,
+    Socket NVARCHAR(50),
+    MoTa NVARCHAR(255),
+    MaHSX NVARCHAR(20) NOT NULL,
+    FOREIGN KEY (MaHSX) REFERENCES HangSanXuat(MaHSX)
+)
+CREATE TABLE GPU (
+    MaGPU NVARCHAR(20) PRIMARY KEY,       
+    LoaiGPU NVARCHAR(100) NOT NULL,             
+    DungLuong INT CHECK (DungLuong >= 0),                  
+    MoTa NVARCHAR(255),                  
+    MaHSX NVARCHAR(20) NOT NULL,               
+    FOREIGN KEY (MaHSX) REFERENCES HangSanXuat(MaHSX)
+)
+CREATE TABLE CardDoHoa (
+    MaCard NVARCHAR(20) PRIMARY KEY,
+    TenCard NVARCHAR(100) NOT NULL
+)
+CREATE TABLE OCung (
+    MaOCung NVARCHAR(20) PRIMARY KEY,
+    TenOCung NVARCHAR(100) NOT NULL,
+    LoaiOCung NVARCHAR(50) NOT NULL,
+    DungLuong INT CHECK (DungLuong >= 0),
+    MoTa NVARCHAR(225),
+)
+CREATE TABLE ManHinh (
+    MaManHinh NVARCHAR(20) PRIMARY KEY,     
+    TenManHinh NVARCHAR(100) NOT NULL,            
+    DoPhanGiai NVARCHAR(50),               
+    KichThuoc NVARCHAR(50),                
+    MaHSX NVARCHAR(20) NOT NULL,                    
+    FOREIGN KEY (MaHSX) REFERENCES HangSanXuat(MaHSX)  
+)
+CREATE TABLE MayTinh (
+    MaMay NVARCHAR(20) PRIMARY KEY,
+    TenMay NVARCHAR(100) NOT NULL,
+    MaLoaiMay NVARCHAR(20) NOT NULL,
+    MaCPU NVARCHAR(20) NOT NULL,
+    MaRAM NVARCHAR(20) NOT NULL,
+    MaMainboard NVARCHAR(20) NOT NULL,
+    MaGPU NVARCHAR(20) NOT NULL,
+    MaOCung NVARCHAR(20) NOT NULL,
+    MaManHinh NVARCHAR(20) NOT NULL,
+    MaCard NVARCHAR(20) NOT NULL,
+    MaHSX NVARCHAR(20) NOT NULL,
+    HinhAnh NVARCHAR(255),
+    GhiChu NVARCHAR(255),
+    DonGia DECIMAL(18,2) CHECK (DonGia >= 0),
+    SoLuongTon INT CHECK (SoLuongTon >= 0),
+    ThoiGianBaoHanh INT,
+
+    FOREIGN KEY (MaLoaiMay) REFERENCES LoaiMay(MaLoaiMay),
+    FOREIGN KEY (MaCPU) REFERENCES CPU(MaCPU),
+    FOREIGN KEY (MaRAM) REFERENCES RAM(MaRAM),
+    FOREIGN KEY (MaMainboard) REFERENCES Mainboard(MaMainboard),
+    FOREIGN KEY (MaGPU) REFERENCES GPU(MaGPU),
+    FOREIGN KEY (MaOCung) REFERENCES OCung(MaOCung),
+    FOREIGN KEY (MaManHinh) REFERENCES ManHinh(MaManHinh),
+    FOREIGN KEY (MaCard) REFERENCES CardDoHoa(MaCard),
+    FOREIGN KEY (MaHSX) REFERENCES HangSanXuat(MaHSX)
+)
+CREATE TABLE KhachHang (
+    MaKhach NVARCHAR(20) PRIMARY KEY,
+    TenKhach NVARCHAR(100) NOT NULL,
+    GioiTinh NVARCHAR(10),
+    NgaySinh DATETIME,
+    SoDienThoai NVARCHAR(20) NOT NULL,
+    DiaChi NVARCHAR(255),
+    Email NVARCHAR(100) UNIQUE,
+    CONSTRAINT CK_KhachHang_GioiTinh CHECK (GioiTinh IN ('Nam','Nu')),
+)
+CREATE TABLE NhanVien (
+    MaNV NVARCHAR(20) PRIMARY KEY,        
+    TenNV NVARCHAR(100) NOT NULL,             
+    NgaySinh DATETIME,                      
+    GioiTinh NVARCHAR(10),             
+    DiaChi NVARCHAR(255),                
+    SoDienThoai NVARCHAR(20) NOT NULL,        
+    VaiTro NVARCHAR(50),                 
+    Username NVARCHAR(50) UNIQUE NOT NULL,        
+    MatKhau NVARCHAR(50) NOT NULL              
+)
+CREATE TABLE KhuyenMai (
+    MaKhuyenMai NVARCHAR(20) PRIMARY KEY,
+    TenKhuyenMai NVARCHAR(100) NOT NULL,
+    PhanTramGiam INT CHECK (PhanTramGiam BETWEEN 0 AND 100),
+    NgayBatDau DATETIME NOT NULL,
+    NgayKetThuc DATETIME NOT NULL
+)
+CREATE TABLE HoaDonBan (
+    MaHDB NVARCHAR(20) PRIMARY KEY,    
+    MaKhach NVARCHAR(20) NOT NULL,            
+    MaNV NVARCHAR(20) NOT NULL,             
+    NgayBan DATE NOT NULL,                  
+    TongTien DECIMAL(18,2) CHECK (Tongtien >= 0),     
+    TrangThaiDonHang NVARCHAR(50) NOT NULL,  
+
+    FOREIGN KEY (MaKhach) REFERENCES KhachHang(MaKhach),
+    FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV)
+)
+CREATE TABLE ChiTietHDB (
+    MaCTHDB NVARCHAR(20) PRIMARY KEY,
+    MaHDB NVARCHAR(20) NOT NULL,
+    MaMay NVARCHAR(20) NOT NULL,
+    SoLuong INT CHECK (SoLuong > 0),
+    GiaBan DECIMAL(18,2) CHECK (GiaBan > 0),
+    ThanhTien AS (SoLuong * GiaBan) PERSISTED,
+    MaKhuyenMai NVARCHAR(20), 
+    
+    FOREIGN KEY (MaHDB) REFERENCES HoaDonBan(MaHDB),
+    FOREIGN KEY (MaMay) REFERENCES MayTinh(MaMay),
+    FOREIGN KEY (MaKhuyenmai) REFERENCES KhuyenMai(MaKhuyenMai)  
+)
+CREATE TABLE NhaCungCap (
+    MaNCC NVARCHAR(20) PRIMARY KEY,
+    TenNCC NVARCHAR(100) NOT NULL,
+    DiaChi NVARCHAR(255) NOT NULL,
+    SoDienThoai NVARCHAR(20) NOT NULL,
+    Email NVARCHAR(100) UNIQUE
+)
+CREATE TABLE HoaDonNhap (
+    MaHDN NVARCHAR(20) PRIMARY KEY,
+    MaNCC NVARCHAR(20) NOT NULL,
+    MaNV NVARCHAR(20) NOT NULL,
+    NgayNhap DATE NOT NULL,
+    TongTien DECIMAL(18,2) CHECK (TongTien > 0),
+
+    FOREIGN KEY (MaNCC) REFERENCES NhaCungCap(MaNCC),
+    FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV)
+)
+CREATE TABLE ChiTietHDN (
+    MaCTHDN NVARCHAR(20) PRIMARY KEY,
+    MaHDN NVARCHAR(20) NOT NULL,
+    MaMay NVARCHAR(20) NOT NULL,
+    SoLuong INT CHECK (SoLuong > 0),
+    DonGia DECIMAL(18,2) CHECK (DonGia > 0),
+    ThanhTien AS (SoLuong * DonGia) PERSISTED,
+
+    FOREIGN KEY (MaHDN) REFERENCES HoaDonNhap(MaHDN),
+    FOREIGN KEY (MaMay) REFERENCES MayTinh(MaMay)
+)
