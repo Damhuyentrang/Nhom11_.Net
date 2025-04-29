@@ -1,0 +1,10 @@
+D:\ki2nam3\.net\BTL_nhom11_marketPC\obj\Debug\BTL_nhom11_marketPC.csproj.AssemblyReference.cache
+D:\ki2nam3\.net\BTL_nhom11_marketPC\obj\Debug\BTL_nhom11_marketPC.Forms.FrmMainMenu.resources
+D:\ki2nam3\.net\BTL_nhom11_marketPC\obj\Debug\BTL_nhom11_marketPC.Properties.Resources.resources
+D:\ki2nam3\.net\BTL_nhom11_marketPC\obj\Debug\BTL_nhom11_marketPC.csproj.GenerateResource.cache
+D:\ki2nam3\.net\BTL_nhom11_marketPC\obj\Debug\BTL_nhom11_marketPC.csproj.CoreCompileInputs.cache
+D:\ki2nam3\.net\BTL_nhom11_marketPC\bin\Debug\BTL_nhom11_marketPC.exe.config
+D:\ki2nam3\.net\BTL_nhom11_marketPC\bin\Debug\BTL_nhom11_marketPC.exe
+D:\ki2nam3\.net\BTL_nhom11_marketPC\bin\Debug\BTL_nhom11_marketPC.pdb
+D:\ki2nam3\.net\BTL_nhom11_marketPC\obj\Debug\BTL_nhom11_marketPC.exe
+D:\ki2nam3\.net\BTL_nhom11_marketPC\obj\Debug\BTL_nhom11_marketPC.pdb

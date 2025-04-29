@@ -16,7 +16,7 @@ namespace BTL_nhom11_marketPC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Forms.FrmMainMenu());
         }
     }
 }

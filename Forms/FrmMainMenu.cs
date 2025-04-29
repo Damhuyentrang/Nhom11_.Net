@@ -16,5 +16,15 @@ namespace BTL_nhom11_marketPC.Forms
         {
             InitializeComponent();
         }
+
+        private void giaoDịchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmMainMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
