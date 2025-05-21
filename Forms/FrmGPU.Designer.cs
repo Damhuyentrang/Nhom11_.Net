@@ -29,6 +29,7 @@ namespace BTL_nhom11_marketPC.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtMota = new System.Windows.Forms.TextBox();
             this.txtDungluong = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,6 +48,7 @@ namespace BTL_nhom11_marketPC.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGPU)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +57,7 @@ namespace BTL_nhom11_marketPC.Forms
             this.txtMota.Location = new System.Drawing.Point(500, 72);
             this.txtMota.Multiline = true;
             this.txtMota.Name = "txtMota";
-            this.txtMota.Size = new System.Drawing.Size(249, 132);
+            this.txtMota.Size = new System.Drawing.Size(273, 132);
             this.txtMota.TabIndex = 91;
             // 
             // txtDungluong
@@ -81,9 +83,9 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnThoat.Image = global::BTL_nhom11_marketPC.Properties.Resources.exit;
-            this.btnThoat.Location = new System.Drawing.Point(654, 456);
+            this.btnThoat.Location = new System.Drawing.Point(669, 456);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(95, 42);
+            this.btnThoat.Size = new System.Drawing.Size(104, 42);
             this.btnThoat.TabIndex = 88;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -96,9 +98,9 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnHuybo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuybo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnHuybo.Image = global::BTL_nhom11_marketPC.Properties.Resources.cancel;
-            this.btnHuybo.Location = new System.Drawing.Point(527, 456);
+            this.btnHuybo.Location = new System.Drawing.Point(535, 456);
             this.btnHuybo.Name = "btnHuybo";
-            this.btnHuybo.Size = new System.Drawing.Size(93, 42);
+            this.btnHuybo.Size = new System.Drawing.Size(105, 42);
             this.btnHuybo.TabIndex = 87;
             this.btnHuybo.Text = "Hủy bỏ";
             this.btnHuybo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -113,7 +115,7 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnLuu.Image = global::BTL_nhom11_marketPC.Properties.Resources.diskette;
             this.btnLuu.Location = new System.Drawing.Point(413, 456);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(82, 42);
+            this.btnLuu.Size = new System.Drawing.Size(91, 42);
             this.btnLuu.TabIndex = 86;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -128,7 +130,7 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnXoa.Image = global::BTL_nhom11_marketPC.Properties.Resources.trash;
             this.btnXoa.Location = new System.Drawing.Point(288, 456);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(90, 42);
+            this.btnXoa.Size = new System.Drawing.Size(100, 42);
             this.btnXoa.TabIndex = 85;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -143,7 +145,7 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnSua.Image = global::BTL_nhom11_marketPC.Properties.Resources.office_material;
             this.btnSua.Location = new System.Drawing.Point(176, 456);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(83, 42);
+            this.btnSua.Size = new System.Drawing.Size(86, 42);
             this.btnSua.TabIndex = 84;
             this.btnSua.Text = "Sửa";
             this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -202,7 +204,7 @@ namespace BTL_nhom11_marketPC.Forms
             this.dgvGPU.Name = "dgvGPU";
             this.dgvGPU.RowHeadersWidth = 51;
             this.dgvGPU.RowTemplate.Height = 24;
-            this.dgvGPU.Size = new System.Drawing.Size(693, 210);
+            this.dgvGPU.Size = new System.Drawing.Size(717, 210);
             this.dgvGPU.TabIndex = 78;
             this.dgvGPU.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGPU_CellClick);
             // 
@@ -237,17 +239,21 @@ namespace BTL_nhom11_marketPC.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Netron", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(348, 19);
+            this.label1.Location = new System.Drawing.Point(364, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 35);
             this.label1.TabIndex = 74;
             this.label1.Text = "GPU";
             // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipTitle = "Hãy nhập Mã GPU";
+            // 
             // FrmGPU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 519);
+            this.ClientSize = new System.Drawing.Size(834, 519);
             this.Controls.Add(this.txtMota);
             this.Controls.Add(this.txtDungluong);
             this.Controls.Add(this.label5);
@@ -294,5 +300,6 @@ namespace BTL_nhom11_marketPC.Forms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

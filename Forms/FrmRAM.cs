@@ -56,7 +56,7 @@ namespace BTL_nhom11_marketPC.Forms
             dgvRAM.Columns["Mota"].HeaderText = "Mô Tả";
             dgvRAM.Columns["MaHSX"].HeaderText = "Mã HSX"; // Chỉ hiển thị cột MaHSX
             this.Text = "Danh sách RAM";
-            this.Size = new System.Drawing.Size(600, 500);
+            this.Size = new System.Drawing.Size(650, 550);
             dgvRAM.Columns["MaRAM"].Width = 50;
             dgvRAM.Columns["TenRAM"].Width = 150;
             dgvRAM.Columns["Bus"].Width = 80;

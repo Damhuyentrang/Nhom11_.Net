@@ -44,10 +44,10 @@ namespace BTL_nhom11_marketPC.Forms
             dgvGPU.Columns["Mota"].HeaderText = "Mô Tả";
             dgvGPU.Columns["MaHSX"].HeaderText = "Mã HSX"; // Chỉ hiển thị cột MaHSX
             this.Text = "Danh sách GPU";
-            this.Size = new System.Drawing.Size(600, 450);
+            this.Size = new System.Drawing.Size(650, 550);
             dgvGPU.Columns["MaGPU"].Width = 50;
             dgvGPU.Columns["LoaiGPU"].Width = 150;
-            dgvGPU.Columns["Dungluong"].Width = 80;
+            dgvGPU.Columns["Dungluong"].Width = 100;
             dgvGPU.Columns["Mota"].Width = 100;
             dgvGPU.Columns["MaHSX"].Width = 100;
 
@@ -264,19 +264,6 @@ namespace BTL_nhom11_marketPC.Forms
         {
             if (selectedGPU == null || string.IsNullOrWhiteSpace(selectedGPU.MaGPU))
             {
-                MessageBox.Show("Vui lòng chọn một GPU để sửa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            _isEditing = true;
-            LockTextBoxes(false);
-            txtMaGPU.Focus();
-        }
-
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            if (selectedGPU == null || string.IsNullOrWhiteSpace(selectedGPU.MaGPU))
-            {
                 MessageBox.Show("Vui lòng chọn một GPU để xóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -297,6 +284,19 @@ namespace BTL_nhom11_marketPC.Forms
                     MessageBox.Show($"Lỗi khi xóa: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if (selectedGPU == null || string.IsNullOrWhiteSpace(selectedGPU.MaGPU))
+            {
+                MessageBox.Show("Vui lòng chọn một GPU để sửa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            _isEditing = true;
+            LockTextBoxes(false);
+            txtMaGPU.Focus();
         }
 
        

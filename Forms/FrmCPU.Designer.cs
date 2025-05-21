@@ -56,7 +56,7 @@ namespace BTL_nhom11_marketPC.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Netron", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(347, 9);
+            this.label1.Location = new System.Drawing.Point(371, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 35);
             this.label1.TabIndex = 38;
@@ -83,9 +83,9 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnThoat.Image = global::BTL_nhom11_marketPC.Properties.Resources.exit;
-            this.btnThoat.Location = new System.Drawing.Point(654, 453);
+            this.btnThoat.Location = new System.Drawing.Point(689, 453);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(92, 44);
+            this.btnThoat.Size = new System.Drawing.Size(97, 44);
             this.btnThoat.TabIndex = 68;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -98,9 +98,9 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnHuybo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuybo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnHuybo.Image = global::BTL_nhom11_marketPC.Properties.Resources.cancel;
-            this.btnHuybo.Location = new System.Drawing.Point(518, 453);
+            this.btnHuybo.Location = new System.Drawing.Point(544, 453);
             this.btnHuybo.Name = "btnHuybo";
-            this.btnHuybo.Size = new System.Drawing.Size(93, 44);
+            this.btnHuybo.Size = new System.Drawing.Size(117, 44);
             this.btnHuybo.TabIndex = 67;
             this.btnHuybo.Text = "Hủy bỏ";
             this.btnHuybo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -113,9 +113,9 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnLuu.Image = global::BTL_nhom11_marketPC.Properties.Resources.diskette;
-            this.btnLuu.Location = new System.Drawing.Point(401, 453);
+            this.btnLuu.Location = new System.Drawing.Point(425, 453);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(81, 44);
+            this.btnLuu.Size = new System.Drawing.Size(89, 44);
             this.btnLuu.TabIndex = 66;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -128,9 +128,9 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnXoa.Image = global::BTL_nhom11_marketPC.Properties.Resources.trash;
-            this.btnXoa.Location = new System.Drawing.Point(284, 453);
+            this.btnXoa.Location = new System.Drawing.Point(306, 453);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(81, 44);
+            this.btnXoa.Size = new System.Drawing.Size(89, 44);
             this.btnXoa.TabIndex = 65;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -143,9 +143,9 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSua.Image = global::BTL_nhom11_marketPC.Properties.Resources.office_material;
-            this.btnSua.Location = new System.Drawing.Point(167, 453);
+            this.btnSua.Location = new System.Drawing.Point(188, 453);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(81, 44);
+            this.btnSua.Size = new System.Drawing.Size(88, 44);
             this.btnSua.TabIndex = 64;
             this.btnSua.Text = "Sửa";
             this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -188,9 +188,9 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnThem.Image = global::BTL_nhom11_marketPC.Properties.Resources.add;
-            this.btnThem.Location = new System.Drawing.Point(48, 453);
+            this.btnThem.Location = new System.Drawing.Point(53, 453);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(85, 44);
+            this.btnThem.Size = new System.Drawing.Size(108, 44);
             this.btnThem.TabIndex = 59;
             this.btnThem.Text = "Thêm";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -204,7 +204,7 @@ namespace BTL_nhom11_marketPC.Forms
             this.dgvCPU.Name = "dgvCPU";
             this.dgvCPU.RowHeadersWidth = 51;
             this.dgvCPU.RowTemplate.Height = 24;
-            this.dgvCPU.Size = new System.Drawing.Size(693, 185);
+            this.dgvCPU.Size = new System.Drawing.Size(733, 185);
             this.dgvCPU.TabIndex = 58;
             this.dgvCPU.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCPU_CellClick);
             // 
@@ -264,7 +264,7 @@ namespace BTL_nhom11_marketPC.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 522);
+            this.ClientSize = new System.Drawing.Size(844, 522);
             this.Controls.Add(this.txtSocket);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtMota);

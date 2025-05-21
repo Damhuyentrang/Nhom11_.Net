@@ -38,7 +38,7 @@ namespace BTL_nhom11_marketPC.Forms
             dgvCPU.Columns["Mota"].HeaderText = "Mô Tả";
             dgvCPU.Columns["MaHSX"].HeaderText = "Mã HSX"; // Chỉ hiển thị cột MaHSX
             this.Text = "Danh sách CPU";
-            this.Size = new System.Drawing.Size(600, 450);
+            this.Size = new System.Drawing.Size(650, 550);
             dgvCPU.Columns["MaCPU"].Width = 50;
             dgvCPU.Columns["TenCPU"].Width = 150;
             dgvCPU.Columns["Tocdo"].Width = 80;

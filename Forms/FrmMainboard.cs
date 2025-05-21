@@ -39,7 +39,7 @@ namespace BTL_nhom11_marketPC.Forms
             dgvMainboard.Columns["Mota"].HeaderText = "Mô Tả";
             dgvMainboard.Columns["MaHSX"].HeaderText = "Mã HSX"; // Chỉ hiển thị cột MaHSX
             this.Text = "Danh sách Mainboard";
-            this.Size = new System.Drawing.Size(600, 450);
+            this.Size = new System.Drawing.Size(650, 550);
             dgvMainboard.Columns["MaMainboard"].Width = 50;
             dgvMainboard.Columns["TenMainboard"].Width = 150;
             dgvMainboard.Columns["Socket"].Width = 80;
