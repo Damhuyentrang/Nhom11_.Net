@@ -10,8 +10,8 @@ namespace BTL_nhom11_marketPC.Repositories
 {
     public class GenericRepository<T> : IRepository<T> where T : class
     {
-        private readonly string tableName;
-        private readonly string idPropertyName;
+        private readonly string tableName;//Lưu tên bảng trong cơ sở dữ liệu mà repository này sẽ làm việc
+        private readonly string idPropertyName;//Lưu tên thuộc tính đại diện cho khóa chính (Mặc định là ID)
 
         public GenericRepository(string tableName, string idPropertyName = "Id")
         {
@@ -22,7 +22,7 @@ namespace BTL_nhom11_marketPC.Repositories
         public List<T> GetAll()
         {
             List<T> items = new List<T>();
-            using (var conn = DatabaseContext.GetConnection())
+            using (var conn = DatabaseContext.GetConnection())//Dùng using để đảm bảo kết nối tự đóng
             {
                 try
                 {
@@ -32,13 +32,13 @@ namespace BTL_nhom11_marketPC.Repositories
                     {
                         while (reader.Read())
                         {
-                            T item = Activator.CreateInstance<T>();
-                            var properties = typeof(T).GetProperties();
+                            T item = Activator.CreateInstance<T>();//Tạo 1 Instance của T bằng Activator.CreateInstance
+                            var properties = typeof(T).GetProperties();//Lấy tất cả thuộc tính của T bằng GetProperties
                             foreach (var prop in properties)
                             {
-                                if (reader.HasColumn(prop.Name) && !reader.IsDBNull(reader.GetOrdinal(prop.Name)))
+                                if (reader.HasColumn(prop.Name) && !reader.IsDBNull(reader.GetOrdinal(prop.Name))) //Kiểm tra dữ liệu khớp với cột và có null không
                                 {
-                                    prop.SetValue(item, Convert.ChangeType(reader[prop.Name], prop.PropertyType));
+                                    prop.SetValue(item, Convert.ChangeType(reader[prop.Name], prop.PropertyType));//Gán gtri csdl vào ttinh cua item sau khi chuyển kiểu dl
                                 }
                             }
                             items.Add(item);
@@ -94,7 +94,7 @@ namespace BTL_nhom11_marketPC.Repositories
 
         public void Add(T entity)
         {
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
+            if (entity == null) throw new ArgumentNullException(nameof(entity));//Kiểm tra đầu vào
 
             using (var conn = DatabaseContext.GetConnection())
             {
@@ -140,7 +140,7 @@ namespace BTL_nhom11_marketPC.Repositories
                     var properties = typeof(T).GetProperties()
                         .Where(p => p.CanWrite)
                         .ToList();
-                    var setClauses = string.Join(", ", properties.Where(p => p.Name != idPropertyName).Select(p => $"{p.Name} = @{p.Name}"));
+                    var setClauses = string.Join(", ", properties.Where(p => p.Name != idPropertyName).Select(p => $"{p.Name} = @{p.Name}"));//Tạo danh sách các cột cần cập nhật
                     string query = $"UPDATE {tableName} SET {setClauses} WHERE {idPropertyName} = @{idPropertyName}";
 
                     using (var cmd = new SqlCommand(query, conn))
@@ -239,7 +239,7 @@ namespace BTL_nhom11_marketPC.Repositories
     }
 
 
-    public static class SqlDataReaderExtensions
+    public static class SqlDataReaderExtensions//kiểm tra xem một cột có tồn tại trong kết quả truy vấn hay không
     {
         public static bool HasColumn(this SqlDataReader reader, string columnName)
         {

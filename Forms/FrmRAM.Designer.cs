@@ -34,14 +34,10 @@ namespace BTL_nhom11_marketPC.Forms
             this.label5 = new System.Windows.Forms.Label();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnHuybo = new System.Windows.Forms.Button();
-            this.btnLuu = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.txtTenRAM = new System.Windows.Forms.TextBox();
             this.txtHangsanxuat = new System.Windows.Forms.TextBox();
             this.txtMaRAM = new System.Windows.Forms.TextBox();
-            this.btnThem = new System.Windows.Forms.Button();
             this.dgvRAM = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,6 +45,10 @@ namespace BTL_nhom11_marketPC.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.txtBus = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRAM)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,11 +81,13 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnThoat.BackColor = System.Drawing.Color.SteelBlue;
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnThoat.Location = new System.Drawing.Point(672, 478);
+            this.btnThoat.Image = global::BTL_nhom11_marketPC.Properties.Resources.exit;
+            this.btnThoat.Location = new System.Drawing.Point(657, 478);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(75, 35);
+            this.btnThoat.Size = new System.Drawing.Size(90, 44);
             this.btnThoat.TabIndex = 106;
             this.btnThoat.Text = "Thoát";
+            this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
@@ -94,52 +96,15 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnHuybo.BackColor = System.Drawing.Color.SteelBlue;
             this.btnHuybo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuybo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnHuybo.Location = new System.Drawing.Point(543, 478);
+            this.btnHuybo.Image = global::BTL_nhom11_marketPC.Properties.Resources.cancel;
+            this.btnHuybo.Location = new System.Drawing.Point(529, 478);
             this.btnHuybo.Name = "btnHuybo";
-            this.btnHuybo.Size = new System.Drawing.Size(75, 35);
+            this.btnHuybo.Size = new System.Drawing.Size(92, 44);
             this.btnHuybo.TabIndex = 105;
             this.btnHuybo.Text = "Hủy bỏ";
+            this.btnHuybo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHuybo.UseVisualStyleBackColor = false;
             this.btnHuybo.Click += new System.EventHandler(this.btnHuybo_Click);
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLuu.Location = new System.Drawing.Point(417, 478);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(75, 35);
-            this.btnLuu.TabIndex = 104;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.UseVisualStyleBackColor = false;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnXoa.Location = new System.Drawing.Point(296, 478);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 35);
-            this.btnXoa.TabIndex = 103;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = false;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnSua
-            // 
-            this.btnSua.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSua.Location = new System.Drawing.Point(174, 478);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 35);
-            this.btnSua.TabIndex = 102;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = false;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // label12
             // 
@@ -170,19 +135,6 @@ namespace BTL_nhom11_marketPC.Forms
             this.txtMaRAM.Name = "txtMaRAM";
             this.txtMaRAM.Size = new System.Drawing.Size(218, 22);
             this.txtMaRAM.TabIndex = 98;
-            // 
-            // btnThem
-            // 
-            this.btnThem.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnThem.Location = new System.Drawing.Point(49, 478);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 35);
-            this.btnThem.TabIndex = 97;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = false;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // dgvRAM
             // 
@@ -225,10 +177,10 @@ namespace BTL_nhom11_marketPC.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Netron", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(355, 15);
+            this.label1.Font = new System.Drawing.Font("Netron", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(338, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 29);
+            this.label1.Size = new System.Drawing.Size(87, 35);
             this.label1.TabIndex = 92;
             this.label1.Text = "RAM";
             // 
@@ -249,11 +201,72 @@ namespace BTL_nhom11_marketPC.Forms
             this.label6.TabIndex = 111;
             this.label6.Text = "Bus";
             // 
+            // btnLuu
+            // 
+            this.btnLuu.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLuu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLuu.Image = global::BTL_nhom11_marketPC.Properties.Resources.diskette;
+            this.btnLuu.Location = new System.Drawing.Point(411, 478);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(82, 44);
+            this.btnLuu.TabIndex = 104;
+            this.btnLuu.Text = " Lưu";
+            this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLuu.UseVisualStyleBackColor = false;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnXoa.Image = global::BTL_nhom11_marketPC.Properties.Resources.trash;
+            this.btnXoa.Location = new System.Drawing.Point(285, 478);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(90, 44);
+            this.btnXoa.TabIndex = 103;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnSua
+            // 
+            this.btnSua.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSua.Image = global::BTL_nhom11_marketPC.Properties.Resources.office_material;
+            this.btnSua.Location = new System.Drawing.Point(168, 478);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(83, 44);
+            this.btnSua.TabIndex = 102;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSua.UseVisualStyleBackColor = false;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnThem.Image = global::BTL_nhom11_marketPC.Properties.Resources.add;
+            this.btnThem.Location = new System.Drawing.Point(54, 478);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(89, 44);
+            this.btnThem.TabIndex = 97;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
             // FrmRAM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 532);
+            this.ClientSize = new System.Drawing.Size(800, 549);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtBus);
             this.Controls.Add(this.txtMota);
