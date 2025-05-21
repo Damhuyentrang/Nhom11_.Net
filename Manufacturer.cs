@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BTL_nhom11_marketPC.Models
+{
+    class Manufacturer
+    {
+        
+    public string ManufacturerID { get; set; }
+    public string ManufacturerName { get; set; }
+    }
+}
+
