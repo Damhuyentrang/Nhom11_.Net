@@ -26,5 +26,33 @@ namespace BTL_nhom11_marketPC.Forms
         {
 
         }
+
+        private void mainboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.FrmMainboard frmMainboard = new Forms.FrmMainboard();
+            frmMainboard.StartPosition = FormStartPosition.CenterScreen;
+            frmMainboard.ShowDialog();
+        }
+
+        private void cPUToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.FrmCPU frmCPU = new Forms.FrmCPU();
+            frmCPU.StartPosition = FormStartPosition.CenterScreen;
+            frmCPU.ShowDialog();
+        }
+
+        private void gPUToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.FrmGPU frmGPU = new Forms.FrmGPU();
+            frmGPU.StartPosition = FormStartPosition.CenterScreen;
+            frmGPU.ShowDialog();
+        }
+
+        private void rAMToolStripMenuItem_Click(object sender, EventArgs e)
+        { 
+            Forms.FrmRAM frmRAM = new Forms.FrmRAM();
+            frmRAM.StartPosition = FormStartPosition.CenterScreen;
+            frmRAM.ShowDialog();
+        }
     }
 }
