@@ -11,8 +11,8 @@ namespace BTL_nhom11_marketPC.Views
 {
     public interface ManufacturerView
     {
-        string ManufacturerID { get; set; }
-        string ManufacturerName { get; set; }
+        string MaHSX { get; set; }
+        string TenHSX { get; set; }
 
         void SetManufacturerList(List<Manufacturer> manufacturers);
         void ShowMessage(string message);
