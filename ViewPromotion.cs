@@ -14,8 +14,7 @@ namespace BTL_nhom11_marketPC.Views
         int PhanTramGiam { get; }
         DateTime NgayBatDau { get; }
         DateTime NgayKetThuc { get; }
-
-        void SetPromotionList(List<Promotion> list); 
-        void ShowMessage(string message);
+        void UpdatePromotionList(IEnumerable<Promotion> promotions); 
+    
     }
 }
