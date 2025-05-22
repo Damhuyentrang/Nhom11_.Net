@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace BTL_nhom11_marketPC.Views
 {
-    public interface ViewPromotion
+    public interface IViewPromotion
     {
         string MaKhuyenMai { get; }
         string TenKhuyenMai { get; }
         int PhanTramGiam { get; }
         DateTime NgayBatDau { get; }
         DateTime NgayKetThuc { get; }
-        void UpdatePromotionList(IEnumerable<Promotion> promotions); 
+       void SetPromotionList(List<Promotion> list); 
+       void ShowMessage(string message);
     
     }
 }
