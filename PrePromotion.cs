@@ -7,34 +7,20 @@ namespace BTL_nhom11_marketPC.Presenters
 {
     public class PrePromotion
     {
-        private readonly ViewPromotion _view;
-        private readonly List<Promotion> _promotionList;
+        private readonly IViewPromotion view;
+        private readonly IRepository<Promotion> repository;
 
-        public PrePromotion(ViewPromotion view)
+        public PrePromotion(IViewPromotion view, IRepository<Promotion> repository)
         {
-            _view = view;
-            _promotionList = new List<Promotion>();
+            this.view = view;
+            this.repository = repository;
         }
 
-        public void LoadPromotion()
+        public void LoadPromotions()
         {
-            _view.SetPromotionList(_promotionList);
+            var promotions = repository.GetAll(); 
+            view.UpdatePromotionList(promotions); 
         }
 
-        public void AddPromotion()
-        {
-            var km = new Promotion
-            {
-                MaKhuyenMai = _view.MaKhuyenMai,
-                TenKhuyenMai = _view.TenKhuyenMai,
-                PhanTramGiam = _view.PhanTramGiam,
-                NgayBatDau = _view.NgayBatDau,
-                NgayKetThuc = _view.NgayKetThuc
-            };
-
-            _promotionList.Add(km);
-            _view.ShowMessage("Thêm khuyến mãi thành công.");
-            LoadPromotion();
-        }
     }
 }
