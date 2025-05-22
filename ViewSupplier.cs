@@ -15,7 +15,6 @@ namespace BTL_nhom11_marketPC.Views
         string SoDienThoai { get; set; }
         string Email { get; set; }
 
-        void SetSupplierList(List<Supplier> suppliers);
-        void ShowMessage(string message);
+        void UpdateSupplierList(IEnumerable<Supplier> suppliers); 
     }
 }
