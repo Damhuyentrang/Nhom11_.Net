@@ -9,12 +9,12 @@ using BTL_nhom11_marketPC.Models;
 
 namespace BTL_nhom11_marketPC.Views
 {
-    public interface ManufacturerView
+    public interface IViewManufacturer
     {
         string MaHSX { get; set; }
         string TenHSX { get; set; }
 
-        void SetManufacturerList(List<Manufacturer> manufacturers);
-        void ShowMessage(string message);
+        void UpdateManufacturerList(IEnumerable<Manufacturer> manufacturers);
+    
     }
 }
