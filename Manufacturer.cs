@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BTL_nhom11_marketPC.Models
 {
@@ -14,7 +9,5 @@ namespace BTL_nhom11_marketPC.Models
 
         [Required]
         public string TenHSX { get; set; }
-
     }
 }
-
