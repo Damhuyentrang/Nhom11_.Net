@@ -1,38 +1,67 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BTL_nhom11_marketPC.Database.Repositories;
-using BTL_nhom11_marketPC.Forms;
-using BTL_nhom11_marketPC.Models;
 using BTL_nhom11_marketPC.Views;
+using BTL_nhom11_marketPC.Models;
+using BTL_nhom11_marketPC.Database.Repositories;
+using System;
 
 namespace BTL_nhom11_marketPC.Presenters
 {
     public class PreSupplier
     {
         private readonly IViewSupplier view;
-        private readonly IRepository<Supplier> repository;
-        private FrmSupplier frmSupplier;
-        private SupplierRepository repository1;
+        private readonly SupplierRepository repository;
 
-        public PreSupplier(IViewSupplier view, IRepository<Supplier> repository)
+        public object MaNCC { get; internal set; }
+
+        public PreSupplier(IViewSupplier view, SupplierRepository repository)
         {
             this.view = view;
             this.repository = repository;
         }
 
-        public PreSupplier(FrmSupplier frmSupplier, SupplierRepository repository1)
-        {
-            this.frmSupplier = frmSupplier;
-            this.repository1 = repository1;
-        }
-
         public void LoadSuppliers()
         {
-            var suppliers = repository.GetAll();
-            view.UpdateSupplierList(suppliers);
+            try
+            {
+                var list = repository.GetAll();
+                view.UpdateSupplierList(list);
+            }
+            catch (Exception ex)
+            {
+                view.ShowError("Lỗi khi tải danh sách nhà cung cấp: " + ex.Message);
+            }
+        }
+
+        public void AddSupplier(Supplier supplier)
+        {
+            repository.Add(supplier);
+            LoadSuppliers();
+        }
+
+        public void UpdateSupplier(Supplier supplier)
+        {
+            repository.Update(supplier);
+            LoadSuppliers();
+        }
+
+        public void DeleteSupplier(string maNCC)
+        {
+            repository.Delete(maNCC);
+            LoadSuppliers();
+        }
+
+        internal void DeleteSupplier(object maNCC)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void LoadSupplier()
+        {
+            throw new NotImplementedException();
         }
     }
 }
