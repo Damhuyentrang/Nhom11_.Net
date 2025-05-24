@@ -2,7 +2,7 @@
 
 namespace BTL_nhom11_marketPC.Forms
 {
-    partial class FrmSupplier
+    partial class FrmPromotion
     {
         /// <summary>
         /// Required designer variable.
