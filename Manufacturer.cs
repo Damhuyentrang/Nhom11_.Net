@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace BTL_nhom11_marketPC.Models
 {
-    class Manufacturer
+    public class Manufacturer
     {
-        
-    public string MaHSX { get; set; }
-    public string TenHSX { get; set; }
+        public string MaHSX { get; set; }
+        public string TenHSX { get; set; }
     }
 }
 
