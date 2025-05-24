@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 namespace BTL_nhom11_marketPC.Database
 {
     class DatabaseContext
     {
         private static SqlConnection conn;
 
-        private static string connStr = @"Data Source=.\SQLEXPRESS;Initial Catalog=TenCSDL;Integrated Security=True;";
+        private static string connStr = @"Data Source=LAPTOP-8SCK9PD5\SQLEXPRESS02;Initial Catalog=CuaHangPhanMemMayTinh;Integrated Security=True;";
 
         public static SqlConnection GetConnection()
         {
