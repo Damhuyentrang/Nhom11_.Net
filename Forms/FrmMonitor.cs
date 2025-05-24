@@ -21,10 +21,6 @@ namespace BTL_nhom11_marketPC.Forms
 
         public string TenManHinh => throw new NotImplementedException();
 
-        public string DoPhanGiai => throw new NotImplementedException();
-
-        public string KichThuoc => throw new NotImplementedException();
-
         public string MaHSX => throw new NotImplementedException();
 
         public object txtKichthuoc { get; private set; }
