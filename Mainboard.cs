@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BTL_nhom11_marketPC.Models
 {
@@ -22,5 +17,6 @@ namespace BTL_nhom11_marketPC.Models
 
         [ForeignKey("Manufacturer")]
         public string MaHSX { get; set; } // Khóa ngoại trực tiếp từ CSDL
+        public virtual Manufacturer Manufacturer { get; set; }
     }
 }

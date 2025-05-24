@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using BTL_nhom11_marketPC.Presenters;
-using BTL_nhom11_marketPC.Models;
-using BTL_nhom11_marketPC.Views;
 using BTL_nhom11_marketPC.Database.Repositories;
+using BTL_nhom11_marketPC.Models;
+using BTL_nhom11_marketPC.Presenters;
+using BTL_nhom11_marketPC.Views;
 
 namespace BTL_nhom11_marketPC.Forms
 {
     public partial class FrmCPU : Form, IViewCPU
     {
         private CPURepository repository;
+        private ManufacturerRepository manufacturerRepository;
         private CPU selectedCPU;
         private PreCPU presenter;
         private bool _isEditing;
@@ -18,13 +19,15 @@ namespace BTL_nhom11_marketPC.Forms
         {
             InitializeComponent();
             repository = new CPURepository();
-            presenter = new PreCPU(this, repository);
+            manufacturerRepository = new ManufacturerRepository();
+            presenter = new PreCPU(this, repository, manufacturerRepository);
             dgvCPU.CellClick += dgvCPU_CellClick;
             LockTextBoxes(true);
         }
 
         private void FrmCPU_Load(object sender, EventArgs e)
         {
+            presenter.LoadManufacturers();
             presenter.LoadCPUs();
         }
         public void UpdateCPUList(List<CPU> CPUs)
@@ -57,21 +60,36 @@ namespace BTL_nhom11_marketPC.Forms
                 }
             };
         }
-
+        public void UpdateHSXList(List<Manufacturer> manufacturers)
+        {
+            cboHSX.Items.Clear();
+            foreach (var manufacturer in manufacturers)
+            {
+                cboHSX.Items.Add(manufacturer.MaHSX);
+            }
+            if (cboHSX.Items.Count > 0)
+            {
+                cboHSX.SelectedIndex = 0; // Chọn mục đầu tiên nếu danh sách không rỗng
+            }
+        }
+        public void ShowError(string message)
+        {
+            MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         private void dgvCPU_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if(e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvCPU.Rows[e.RowIndex];
                 selectedCPU = row.DataBoundItem as CPU;
                 if (selectedCPU != null)
                 {
-                    txtMacpu.Text = selectedCPU.MaCPU?? "";
+                    txtMacpu.Text = selectedCPU.MaCPU ?? "";
                     txtTenCPU.Text = selectedCPU.TenCPU ?? "";
                     txtTocdo.Text = selectedCPU.Tocdo ?? "";
                     txtSocket.Text = selectedCPU.Socket ?? "";
                     txtMota.Text = selectedCPU.Mota ?? "";
-                    txtHangsanxuat.Text = selectedCPU.MaHSX ?? ""; // Lấy MaHSX trực tiếp
+                    cboHSX.Text = selectedCPU.MaHSX ?? ""; // Lấy MaHSX trực tiếp
                 }
                 else
                 {
@@ -92,17 +110,17 @@ namespace BTL_nhom11_marketPC.Forms
             txtTocdo.ReadOnly = isLocked;
             txtSocket.ReadOnly = isLocked;
             txtMota.ReadOnly = isLocked;
-            txtHangsanxuat.ReadOnly = isLocked;
+            cboHSX.Enabled = !isLocked;
         }
 
         private void ClearTextBoxes()
         {
             txtMacpu.Text = string.Empty;
             txtTenCPU.Text = string.Empty;
-            txtTocdo.Text= string.Empty;
+            txtTocdo.Text = string.Empty;
             txtSocket.Text = string.Empty;
             txtMota.Text = string.Empty;
-            txtHangsanxuat.Text = string.Empty;
+            cboHSX.Text = string.Empty;
         }
         private void ResetValues()
         {
@@ -112,20 +130,6 @@ namespace BTL_nhom11_marketPC.Forms
         }
         private bool CheckTextBox()
         {
-            if (string.IsNullOrWhiteSpace(txtMacpu.Text))
-            {
-                MessageBox.Show("Mã CPU không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMacpu.Focus();
-                return false;
-            }
-
-            if (!txtMacpu.Text.StartsWith("CPU", StringComparison.OrdinalIgnoreCase))
-            {
-                MessageBox.Show("Mã CPU phải bắt đầu bằng 'MB'!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMacpu.Focus();
-                return false;
-            }
-
             if (string.IsNullOrWhiteSpace(txtTenCPU.Text))
             {
                 MessageBox.Show("Tên CPU không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -152,30 +156,10 @@ namespace BTL_nhom11_marketPC.Forms
                 txtMota.Focus();
                 return false;
             }
-
-            if (string.IsNullOrWhiteSpace(txtHangsanxuat.Text))
-            {
-                MessageBox.Show("Mã Hãng Sản Xuất không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtHangsanxuat.Focus();
-                return false;
-            }
-
-            if (!txtHangsanxuat.Text.StartsWith("HSX", StringComparison.OrdinalIgnoreCase))
-            {
-                MessageBox.Show("Mã Hãng Sản Xuất phải bắt đầu bằng 'HSX'!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtHangsanxuat.Focus();
-                return false;
-            }
-
-            if (txtMacpu.Text.Length > 20)
-            {
-                MessageBox.Show("Mã CPU không được vượt quá 20 ký tự!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMacpu.Focus();
-                return false;
-            }
             return true;
         }
-        private void btnThoat_Click_1(object sender, EventArgs e)
+
+        private void btnThoat_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -185,32 +169,27 @@ namespace BTL_nhom11_marketPC.Forms
             }
         }
 
-        private void btnThem_Click_1(object sender, EventArgs e)
+        private void btnThem_Click(object sender, EventArgs e)
         {
             _isEditing = false;
             ClearTextBoxes();
             LockTextBoxes(false);
-            txtMacpu.Focus();
+            txtTenCPU.Focus();
+            string newMaCPU = repository.GetNextCPU();
+            txtMacpu.Text = newMaCPU;
         }
 
-        private void btnHuybo_Click_1(object sender, EventArgs e)
+        private void btnHuybo_Click(object sender, EventArgs e)
         {
             ResetValues();
         }
+
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (!CheckTextBox())
             {
                 return;
             }
-
-            if (!repository.CheckForeignKeyExists("HangSanXuat", "MaHSX", txtHangsanxuat.Text))
-            {
-                MessageBox.Show("Mã Hãng Sản Xuất không tồn tại trong bảng HangSanXuat!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtHangsanxuat.Focus();
-                return;
-            }
-
             if (MessageBox.Show("Bạn có chắc chắn muốn lưu?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
             {
                 return;
@@ -218,33 +197,23 @@ namespace BTL_nhom11_marketPC.Forms
 
             CPU cpu = new CPU
             {
-                MaCPU= txtMacpu.Text.Trim(), 
-                TenCPU = txtTenCPU.Text.Trim(), 
-                Tocdo= txtTocdo.Text.Trim(),
+                MaCPU = txtMacpu.Text.Trim(),
+                TenCPU = txtTenCPU.Text.Trim(),
+                Tocdo = txtTocdo.Text.Trim(),
                 Socket = txtSocket.Text.Trim(),
                 Mota = txtMota.Text.Trim(),
-                MaHSX = txtHangsanxuat.Text.Trim() // Gán MaHSX trực tiếp từ text box
+                MaHSX = cboHSX.Text // Gán MaHSX trực tiếp từ text box
             };
 
             try
             {
                 if (!_isEditing)
                 {
-                    if (repository.CheckMaCPUExists(cpu.MaCPU))
-                    {
-                        MessageBox.Show("Mã CPU đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
                     repository.Add(cpu);
                     MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    if (selectedCPU != null && selectedCPU.MaCPU != cpu.MaCPU && repository.CheckMaCPUExists(cpu.MaCPU))
-                    {
-                        MessageBox.Show("Mã CPU đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
                     repository.Update(cpu);
                     MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -268,7 +237,8 @@ namespace BTL_nhom11_marketPC.Forms
 
             _isEditing = true;
             LockTextBoxes(false);
-            txtMacpu.Focus();
+            txtMacpu.ReadOnly = true;
+            txtTenCPU.Focus();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

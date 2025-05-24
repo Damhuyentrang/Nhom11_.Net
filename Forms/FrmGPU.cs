@@ -11,6 +11,7 @@ namespace BTL_nhom11_marketPC.Forms
     public partial class FrmGPU : Form, IViewGPU
     {
         private GPURepository repository;
+        private ManufacturerRepository manufacturerRepository;
         private GPU selectedGPU;
         private PreGPU presenter;
         private bool _isEditing;
@@ -18,7 +19,8 @@ namespace BTL_nhom11_marketPC.Forms
         {
             InitializeComponent();
             repository = new GPURepository();
-            presenter = new PreGPU(this, repository);
+            manufacturerRepository = new ManufacturerRepository();
+            presenter = new PreGPU(this, repository, manufacturerRepository);
             dgvGPU.CellClick += dgvGPU_CellClick;
             LockTextBoxes(true);
             txtDungluong.KeyPress += txtDungluong_KeyPress;
@@ -33,6 +35,8 @@ namespace BTL_nhom11_marketPC.Forms
         private void FrmGPU_Load(object sender, EventArgs e)
         {
             presenter.LoadGPUs();
+            presenter.LoadManufacturers();
+
         }
         public void UpdateGPUList(List<GPU> gpus)
         {
@@ -55,19 +59,29 @@ namespace BTL_nhom11_marketPC.Forms
             // Hiển thị MaHSX trực tiếp
             dgvGPU.CellFormatting += (s, e) =>
             {
-                if (e.ColumnIndex == dgvGPU.Columns["DungLuong"].Index && e.RowIndex >= 0)
+                if (e.ColumnIndex == dgvGPU.Columns["MaHSX"].Index && e.RowIndex >= 0)
                 {
                     var gpu = dgvGPU.Rows[e.RowIndex].DataBoundItem as GPU;
-                    e.Value = gpu?.Dungluong + "GB";
-                }
-                else if (e.ColumnIndex == dgvGPU.Columns["MaHSX"].Index && e.RowIndex >= 0)
-                {
-                    var gpu = dgvGPU.Rows[e.RowIndex].DataBoundItem as GPU;
-                    e.Value = gpu?.MaHSX ?? "";
+                    e.Value = gpu?.MaHSX ?? ""; // Hiển thị MaHSX trực tiếp
                 }
             };
         }
-
+        public void UpdateHSXList(List<Manufacturer> manufacturers)
+        {
+            cboHSX.Items.Clear();
+            foreach (var manufacturer in manufacturers)
+            {
+                cboHSX.Items.Add(manufacturer.MaHSX);
+            }
+            if (cboHSX.Items.Count > 0)
+            {
+                cboHSX.SelectedIndex = 0; // Chọn mục đầu tiên nếu danh sách không rỗng
+            }
+        }
+        public void ShowError(string message)
+        {
+            MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         private void dgvGPU_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -80,7 +94,7 @@ namespace BTL_nhom11_marketPC.Forms
                     txtLoaiGPU.Text = selectedGPU.LoaiGPU ?? "";
                     txtDungluong.Text = selectedGPU.Dungluong.ToString();
                     txtMota.Text = selectedGPU.Mota ?? "";
-                    txtHangsanxuat.Text = selectedGPU.MaHSX ?? ""; // Lấy MaHSX trực tiếp
+                    cboHSX.Text = selectedGPU.MaHSX ?? ""; // Lấy MaHSX trực tiếp
                 }
                 else
                 {
@@ -100,7 +114,7 @@ namespace BTL_nhom11_marketPC.Forms
             txtLoaiGPU.ReadOnly = isLocked;
             txtDungluong.ReadOnly = isLocked;
             txtMota.ReadOnly = isLocked;
-            txtHangsanxuat.ReadOnly = isLocked;
+            cboHSX.Enabled = !isLocked;
         }
 
         private void ClearTextBoxes()
@@ -109,7 +123,7 @@ namespace BTL_nhom11_marketPC.Forms
             txtLoaiGPU.Text = string.Empty;
             txtDungluong.Text = string.Empty;
             txtMota.Text = string.Empty;
-            txtHangsanxuat.Text = string.Empty;
+            cboHSX.Text = string.Empty;
         }
 
         private void ResetValues()
@@ -120,20 +134,6 @@ namespace BTL_nhom11_marketPC.Forms
         }
         private bool CheckTextBox()
         {
-            if (string.IsNullOrWhiteSpace(txtMaGPU.Text))
-            {
-                MessageBox.Show("Mã GPU không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMaGPU.Focus();
-                return false;
-            }
-
-            if (!txtMaGPU.Text.StartsWith("GPU", StringComparison.OrdinalIgnoreCase))
-            {
-                MessageBox.Show("Mã GPU phải bắt đầu bằng 'MB'!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMaGPU.Focus();
-                return false;
-            }
-
             if (string.IsNullOrWhiteSpace(txtLoaiGPU.Text))
             {
                 MessageBox.Show("Tên GPU không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -151,27 +151,6 @@ namespace BTL_nhom11_marketPC.Forms
             {
                 MessageBox.Show("Mô tả không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMota.Focus();
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtHangsanxuat.Text))
-            {
-                MessageBox.Show("Mã Hãng Sản Xuất không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtHangsanxuat.Focus();
-                return false;
-            }
-
-            if (!txtHangsanxuat.Text.StartsWith("HSX", StringComparison.OrdinalIgnoreCase))
-            {
-                MessageBox.Show("Mã Hãng Sản Xuất phải bắt đầu bằng 'HSX'!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtHangsanxuat.Focus();
-                return false;
-            }
-
-            if (txtMaGPU.Text.Length > 20)
-            {
-                MessageBox.Show("Mã GPU không được vượt quá 20 ký tự!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMaGPU.Focus();
                 return false;
             }
             return true;
@@ -198,14 +177,6 @@ namespace BTL_nhom11_marketPC.Forms
             {
                 return;
             }
-
-            if (!repository.CheckForeignKeyExists("HangSanXuat", "MaHSX", txtHangsanxuat.Text))
-            {
-                MessageBox.Show("Mã Hãng Sản Xuất không tồn tại trong bảng HangSanXuat!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtHangsanxuat.Focus();
-                return;
-            }
-
             if (MessageBox.Show("Bạn có chắc chắn muốn lưu?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
             {
                 return;
@@ -217,28 +188,18 @@ namespace BTL_nhom11_marketPC.Forms
                 LoaiGPU = txtLoaiGPU.Text.Trim(), // Loại bỏ khoảng trắng thừa
                 Dungluong = int.Parse(txtDungluong.Text.Trim()),
                 Mota = txtMota.Text.Trim(),
-                MaHSX = txtHangsanxuat.Text.Trim() // Gán MaHSX trực tiếp từ text box
+                MaHSX = cboHSX.Text // Gán MaHSX trực tiếp từ text box
             };
 
             try
             {
                 if (!_isEditing)
                 {
-                    if (repository.CheckGPUExists(gpu.MaGPU))
-                    {
-                        MessageBox.Show("Mã GPU đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
                     repository.Add(gpu);
                     MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    if (selectedGPU != null && selectedGPU.MaGPU != gpu.MaGPU && repository.CheckGPUExists(gpu.MaGPU))
-                    {
-                        MessageBox.Show("Mã GPU đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
                     repository.Update(gpu);
                     MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -250,14 +211,6 @@ namespace BTL_nhom11_marketPC.Forms
             {
                 MessageBox.Show("Lỗi khi lưu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            _isEditing = false;
-            ClearTextBoxes();
-            LockTextBoxes(false);
-            txtMaGPU.Focus();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -296,9 +249,18 @@ namespace BTL_nhom11_marketPC.Forms
 
             _isEditing = true;
             LockTextBoxes(false);
-            txtMaGPU.Focus();
+            txtMaGPU.ReadOnly = false;
+            txtLoaiGPU.Focus();
         }
 
-       
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            _isEditing = false;
+            ClearTextBoxes();
+            LockTextBoxes(false);
+            string newMaGPU = repository.GetNextGPU();
+            txtLoaiGPU.Focus();
+            txtMaGPU.Text = newMaGPU;
+        }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using BTL_nhom11_marketPC.Database.Repositories;
 using BTL_nhom11_marketPC.Models;
@@ -14,6 +11,7 @@ namespace BTL_nhom11_marketPC.Forms
     public partial class FrmRAM : Form, IViewRAM
     {
         private RAMRepository repository;
+        private ManufacturerRepository manufacturerRepository;
         private RAM selectedRAM;
         private PreRAM presenter;
         private bool _isEditing;
@@ -21,7 +19,8 @@ namespace BTL_nhom11_marketPC.Forms
         {
             InitializeComponent();
             repository = new RAMRepository();
-            presenter = new PreRAM(this, repository);
+            manufacturerRepository = new ManufacturerRepository();
+            presenter = new PreRAM(this, repository, manufacturerRepository);
             dgvRAM.CellClick += dgvRAM_CellClick;
             LockTextBoxes(true);
             txtDungluong.KeyPress += txtDungluong_KeyPress;
@@ -44,6 +43,7 @@ namespace BTL_nhom11_marketPC.Forms
         private void FrmRAM_Load(object sender, EventArgs e)
         {
             presenter.LoadRAMs();
+            presenter.LoadManufacturers();
         }
         public void UpdateRAMList(List<RAM> rams)
         {
@@ -68,17 +68,28 @@ namespace BTL_nhom11_marketPC.Forms
             // Hiển thị MaHSX trực tiếp
             dgvRAM.CellFormatting += (s, e) =>
             {
-                if (e.ColumnIndex == dgvRAM.Columns["DungLuong"].Index && e.RowIndex >= 0)
+                if (e.ColumnIndex == dgvRAM.Columns["MaHSX"].Index && e.RowIndex >= 0)
                 {
                     var ram = dgvRAM.Rows[e.RowIndex].DataBoundItem as RAM;
-                    e.Value = ram?.Dungluong + "GB";
-                }
-                else if (e.ColumnIndex == dgvRAM.Columns["MaHSX"].Index && e.RowIndex >= 0)
-                {
-                    var ram = dgvRAM.Rows[e.RowIndex].DataBoundItem as RAM;
-                    e.Value = ram?.MaHSX ?? "";
+                    e.Value = ram?.MaHSX ?? ""; // Hiển thị MaHSX trực tiếp
                 }
             };
+        }
+        public void UpdateHSXList(List<Manufacturer> manufacturers)
+        {
+            cboHSX.Items.Clear();
+            foreach (var manufacturer in manufacturers)
+            {
+                cboHSX.Items.Add(manufacturer.MaHSX);
+            }
+            if (cboHSX.Items.Count > 0)
+            {
+                cboHSX.SelectedIndex = 0; // Chọn mục đầu tiên nếu danh sách không rỗng
+            }
+        }
+        public void ShowError(string message)
+        {
+            MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         private void dgvRAM_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -93,7 +104,7 @@ namespace BTL_nhom11_marketPC.Forms
                     txtBus.Text = selectedRAM.Bus.ToString();
                     txtDungluong.Text = selectedRAM.Dungluong.ToString();
                     txtMota.Text = selectedRAM.Mota ?? "";
-                    txtHangsanxuat.Text = selectedRAM.MaHSX ?? ""; // Lấy MaHSX trực tiếp
+                    cboHSX.Text = selectedRAM.MaHSX ?? ""; // Lấy MaHSX trực tiếp
                 }
                 else
                 {
@@ -114,7 +125,7 @@ namespace BTL_nhom11_marketPC.Forms
             txtBus.ReadOnly = isLocked;
             txtDungluong.ReadOnly = isLocked;
             txtMota.ReadOnly = isLocked;
-            txtHangsanxuat.ReadOnly = isLocked;
+            cboHSX.Enabled = !isLocked;
         }
 
         private void ClearTextBoxes()
@@ -124,7 +135,7 @@ namespace BTL_nhom11_marketPC.Forms
             txtBus.Text = string.Empty;
             txtDungluong.Text = string.Empty;
             txtMota.Text = string.Empty;
-            txtHangsanxuat.Text = string.Empty;
+            cboHSX.Text = string.Empty;
         }
 
         private void ResetValues()
@@ -135,20 +146,6 @@ namespace BTL_nhom11_marketPC.Forms
         }
         private bool CheckTextBox()
         {
-            if (string.IsNullOrWhiteSpace(txtMaRAM.Text))
-            {
-                MessageBox.Show("Mã RAM không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMaRAM.Focus();
-                return false;
-            }
-
-            if (!txtMaRAM.Text.StartsWith("RAM", StringComparison.OrdinalIgnoreCase))
-            {
-                MessageBox.Show("Mã RAM phải bắt đầu bằng 'MB'!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMaRAM.Focus();
-                return false;
-            }
-
             if (string.IsNullOrWhiteSpace(txtTenRAM.Text))
             {
                 MessageBox.Show("Tên GPU không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -170,27 +167,6 @@ namespace BTL_nhom11_marketPC.Forms
             {
                 MessageBox.Show("Mô tả không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMota.Focus();
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtHangsanxuat.Text))
-            {
-                MessageBox.Show("Mã Hãng Sản Xuất không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtHangsanxuat.Focus();
-                return false;
-            }
-
-            if (!txtHangsanxuat.Text.StartsWith("HSX", StringComparison.OrdinalIgnoreCase))
-            {
-                MessageBox.Show("Mã Hãng Sản Xuất phải bắt đầu bằng 'HSX'!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtHangsanxuat.Focus();
-                return false;
-            }
-
-            if (txtMaRAM.Text.Length > 20)
-            {
-                MessageBox.Show("Mã RAM không được vượt quá 20 ký tự!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMaRAM.Focus();
                 return false;
             }
             return true;
@@ -217,14 +193,6 @@ namespace BTL_nhom11_marketPC.Forms
             {
                 return;
             }
-
-            if (!repository.CheckForeignKeyExists("HangSanXuat", "MaHSX", txtHangsanxuat.Text))
-            {
-                MessageBox.Show("Mã Hãng Sản Xuất không tồn tại trong bảng HangSanXuat!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtHangsanxuat.Focus();
-                return;
-            }
-
             if (MessageBox.Show("Bạn có chắc chắn muốn lưu?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
             {
                 return;
@@ -232,33 +200,23 @@ namespace BTL_nhom11_marketPC.Forms
 
             RAM ram = new RAM
             {
-                MaRAM = txtMaRAM.Text.Trim(), 
+                MaRAM = txtMaRAM.Text.Trim(),
                 TenRAM = txtTenRAM.Text.Trim(),
                 Bus = int.Parse(txtBus.Text.Trim()),
                 Dungluong = int.Parse(txtDungluong.Text.Trim()),
                 Mota = txtMota.Text.Trim(),
-                MaHSX = txtHangsanxuat.Text.Trim() // Gán MaHSX trực tiếp từ text box
+                MaHSX = cboHSX.Text // Gán MaHSX trực tiếp từ text box
             };
 
             try
             {
                 if (!_isEditing)
                 {
-                    if (repository.CheckRAMExists(ram.MaRAM))
-                    {
-                        MessageBox.Show("Mã RAM đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
                     repository.Add(ram);
                     MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    if (selectedRAM != null && selectedRAM.MaRAM != ram.MaRAM && repository.CheckRAMExists(ram.MaRAM))
-                    {
-                        MessageBox.Show("Mã RAM đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
                     repository.Update(ram);
                     MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -272,15 +230,7 @@ namespace BTL_nhom11_marketPC.Forms
             }
         }
 
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            _isEditing = false;
-            ClearTextBoxes();
-            LockTextBoxes(false);
-            txtMaRAM.Focus();
-        }
-
-        private void btnSua_Click(object sender, EventArgs e)
+        private void btnXoa_Click(object sender, EventArgs e)
         {
             if (selectedRAM == null || string.IsNullOrWhiteSpace(selectedRAM.MaRAM))
             {
@@ -306,7 +256,7 @@ namespace BTL_nhom11_marketPC.Forms
             }
         }
 
-        private void btnXoa_Click(object sender, EventArgs e)
+        private void btnSua_Click(object sender, EventArgs e)
         {
             if (selectedRAM == null || string.IsNullOrWhiteSpace(selectedRAM.MaRAM))
             {
@@ -316,7 +266,18 @@ namespace BTL_nhom11_marketPC.Forms
 
             _isEditing = true;
             LockTextBoxes(false);
-            txtMaRAM.Focus();
+            txtMaRAM.ReadOnly = true;
+            txtTenRAM.Focus();
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            _isEditing = false;
+            ClearTextBoxes();
+            LockTextBoxes(false);
+            string newMaRAM = repository.GetNextRAM();
+            txtTenRAM.Focus();
+            txtMaRAM.Text = newMaRAM;
         }
     }
 }

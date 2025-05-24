@@ -27,11 +27,19 @@ namespace BTL_nhom11_marketPC.Forms
 
         }
 
+        private void hãngSảnXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Forms.FrmManufacturer frmHSX = new Forms.FrmManufacturer();
+            frmHSX.StartPosition = FormStartPosition.CenterScreen;
+            frmHSX.ShowDialog();
+        }
+
         private void mainboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Forms.FrmMainboard frmMainboard = new Forms.FrmMainboard();
             frmMainboard.StartPosition = FormStartPosition.CenterScreen;
             frmMainboard.ShowDialog();
+
         }
 
         private void cPUToolStripMenuItem_Click(object sender, EventArgs e)
@@ -49,7 +57,7 @@ namespace BTL_nhom11_marketPC.Forms
         }
 
         private void rAMToolStripMenuItem_Click(object sender, EventArgs e)
-        { 
+        {
             Forms.FrmRAM frmRAM = new Forms.FrmRAM();
             frmRAM.StartPosition = FormStartPosition.CenterScreen;
             frmRAM.ShowDialog();

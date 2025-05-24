@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Reflection;
 using BTL_nhom11_marketPC.Database;
 using BTL_nhom11_marketPC.Database.Repositories;
+using BTL_nhom11_marketPC.Models;
 
 namespace BTL_nhom11_marketPC.Repositories
 {
@@ -22,7 +22,7 @@ namespace BTL_nhom11_marketPC.Repositories
         public List<T> GetAll()
         {
             List<T> items = new List<T>();
-            using (var conn = DatabaseContext.GetConnection())//Dùng using để đảm bảo kết nối tự đóng
+            using (var conn = DatabaseContext.GetConnection())
             {
                 try
                 {
@@ -32,13 +32,13 @@ namespace BTL_nhom11_marketPC.Repositories
                     {
                         while (reader.Read())
                         {
-                            T item = Activator.CreateInstance<T>();//Tạo 1 Instance của T bằng Activator.CreateInstance
-                            var properties = typeof(T).GetProperties();//Lấy tất cả thuộc tính của T bằng GetProperties
+                            T item = Activator.CreateInstance<T>();
+                            var properties = typeof(T).GetProperties();
                             foreach (var prop in properties)
                             {
-                                if (reader.HasColumn(prop.Name) && !reader.IsDBNull(reader.GetOrdinal(prop.Name))) //Kiểm tra dữ liệu khớp với cột và có null không
+                                if (reader.HasColumn(prop.Name) && !reader.IsDBNull(reader.GetOrdinal(prop.Name)))
                                 {
-                                    prop.SetValue(item, Convert.ChangeType(reader[prop.Name], prop.PropertyType));//Gán gtri csdl vào ttinh cua item sau khi chuyển kiểu dl
+                                    prop.SetValue(item, Convert.ChangeType(reader[prop.Name], prop.PropertyType));
                                 }
                             }
                             items.Add(item);
@@ -62,7 +62,7 @@ namespace BTL_nhom11_marketPC.Repositories
                 try
                 {
                     string query = $@"
-                        SELECT t.*, f.{foreignKeyId}
+                        SELECT t.*, f.{foreignKeyId}, f.{foreignKeyDisplayField}
                         FROM {tableName} t
                         LEFT JOIN {foreignKeyTable} f ON t.{foreignKeyId} = f.{foreignKeyId}";
                     using (var cmd = new SqlCommand(query, conn))
@@ -76,7 +76,18 @@ namespace BTL_nhom11_marketPC.Repositories
                             {
                                 if (reader.HasColumn(prop.Name) && !reader.IsDBNull(reader.GetOrdinal(prop.Name)))
                                 {
-                                    prop.SetValue(item, Convert.ChangeType(reader[prop.Name], prop.PropertyType));
+                                    if (prop.PropertyType == typeof(Manufacturer) && reader.HasColumn(foreignKeyId))
+                                    {
+                                        string maHSX = reader[foreignKeyId].ToString();
+                                        string tenHSX = reader.IsDBNull(reader.GetOrdinal(foreignKeyDisplayField))
+                                            ? null
+                                            : reader[foreignKeyDisplayField].ToString();
+                                        prop.SetValue(item, new Manufacturer { MaHSX = maHSX, TenHSX = tenHSX });
+                                    }
+                                    else
+                                    {
+                                        prop.SetValue(item, Convert.ChangeType(reader[prop.Name], prop.PropertyType));
+                                    }
                                 }
                             }
                             items.Add(item);
@@ -150,7 +161,7 @@ namespace BTL_nhom11_marketPC.Repositories
                             var value = prop.GetValue(entity);
                             cmd.Parameters.AddWithValue($"@{prop.Name}", value ?? (object)DBNull.Value);
                         }
-                       
+
                         if (cmd.ExecuteNonQuery() == 0)
                         {
                             throw new Exception($"Không tìm thấy bản ghi trong {tableName} để cập nhật!");

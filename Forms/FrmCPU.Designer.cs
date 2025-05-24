@@ -29,9 +29,12 @@ namespace BTL_nhom11_marketPC.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.cboHSX = new System.Windows.Forms.ComboBox();
+            this.txtSocket = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtMota = new System.Windows.Forms.TextBox();
             this.txtTocdo = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnHuybo = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
@@ -39,43 +42,63 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnSua = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.txtTenCPU = new System.Windows.Forms.TextBox();
-            this.txtHangsanxuat = new System.Windows.Forms.TextBox();
             this.txtMacpu = new System.Windows.Forms.TextBox();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvCPU = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtSocket = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCPU)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // cboHSX
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Netron", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(371, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 35);
-            this.label1.TabIndex = 38;
-            this.label1.Text = "CPU";
+            this.cboHSX.FormattingEnabled = true;
+            this.cboHSX.Location = new System.Drawing.Point(144, 222);
+            this.cboHSX.Name = "cboHSX";
+            this.cboHSX.Size = new System.Drawing.Size(218, 24);
+            this.cboHSX.TabIndex = 94;
+            // 
+            // txtSocket
+            // 
+            this.txtSocket.Location = new System.Drawing.Point(144, 188);
+            this.txtSocket.Name = "txtSocket";
+            this.txtSocket.Size = new System.Drawing.Size(218, 22);
+            this.txtSocket.TabIndex = 93;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(29, 194);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 16);
+            this.label6.TabIndex = 92;
+            this.label6.Text = "Socket";
             // 
             // txtMota
             // 
-            this.txtMota.Location = new System.Drawing.Point(497, 69);
+            this.txtMota.Location = new System.Drawing.Point(500, 78);
             this.txtMota.Multiline = true;
             this.txtMota.Name = "txtMota";
-            this.txtMota.Size = new System.Drawing.Size(249, 132);
-            this.txtMota.TabIndex = 71;
+            this.txtMota.Size = new System.Drawing.Size(263, 132);
+            this.txtMota.TabIndex = 91;
             // 
             // txtTocdo
             // 
-            this.txtTocdo.Location = new System.Drawing.Point(167, 144);
+            this.txtTocdo.Location = new System.Drawing.Point(144, 153);
             this.txtTocdo.Name = "txtTocdo";
             this.txtTocdo.Size = new System.Drawing.Size(218, 22);
-            this.txtTocdo.TabIndex = 70;
+            this.txtTocdo.TabIndex = 90;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(27, 156);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 16);
+            this.label5.TabIndex = 89;
+            this.label5.Text = "Tốc Độ";
             // 
             // btnThoat
             // 
@@ -83,14 +106,14 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnThoat.Image = global::BTL_nhom11_marketPC.Properties.Resources.exit;
-            this.btnThoat.Location = new System.Drawing.Point(689, 453);
+            this.btnThoat.Location = new System.Drawing.Point(666, 462);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(97, 44);
-            this.btnThoat.TabIndex = 68;
+            this.btnThoat.TabIndex = 88;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThoat.UseVisualStyleBackColor = false;
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click_1);
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnHuybo
             // 
@@ -98,14 +121,14 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnHuybo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuybo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnHuybo.Image = global::BTL_nhom11_marketPC.Properties.Resources.cancel;
-            this.btnHuybo.Location = new System.Drawing.Point(544, 453);
+            this.btnHuybo.Location = new System.Drawing.Point(521, 462);
             this.btnHuybo.Name = "btnHuybo";
             this.btnHuybo.Size = new System.Drawing.Size(117, 44);
-            this.btnHuybo.TabIndex = 67;
+            this.btnHuybo.TabIndex = 87;
             this.btnHuybo.Text = "Hủy bỏ";
             this.btnHuybo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHuybo.UseVisualStyleBackColor = false;
-            this.btnHuybo.Click += new System.EventHandler(this.btnHuybo_Click_1);
+            this.btnHuybo.Click += new System.EventHandler(this.btnHuybo_Click);
             // 
             // btnLuu
             // 
@@ -113,10 +136,10 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnLuu.Image = global::BTL_nhom11_marketPC.Properties.Resources.diskette;
-            this.btnLuu.Location = new System.Drawing.Point(425, 453);
+            this.btnLuu.Location = new System.Drawing.Point(402, 462);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(89, 44);
-            this.btnLuu.TabIndex = 66;
+            this.btnLuu.TabIndex = 86;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLuu.UseVisualStyleBackColor = false;
@@ -128,10 +151,10 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnXoa.Image = global::BTL_nhom11_marketPC.Properties.Resources.trash;
-            this.btnXoa.Location = new System.Drawing.Point(306, 453);
+            this.btnXoa.Location = new System.Drawing.Point(283, 462);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(89, 44);
-            this.btnXoa.TabIndex = 65;
+            this.btnXoa.TabIndex = 85;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnXoa.UseVisualStyleBackColor = false;
@@ -143,10 +166,10 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSua.Image = global::BTL_nhom11_marketPC.Properties.Resources.office_material;
-            this.btnSua.Location = new System.Drawing.Point(188, 453);
+            this.btnSua.Location = new System.Drawing.Point(165, 462);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(88, 44);
-            this.btnSua.TabIndex = 64;
+            this.btnSua.TabIndex = 84;
             this.btnSua.Text = "Sửa";
             this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSua.UseVisualStyleBackColor = false;
@@ -155,32 +178,25 @@ namespace BTL_nhom11_marketPC.Forms
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(442, 72);
+            this.label12.Location = new System.Drawing.Point(451, 81);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(40, 16);
-            this.label12.TabIndex = 63;
+            this.label12.TabIndex = 83;
             this.label12.Text = "Mô tả";
             // 
             // txtTenCPU
             // 
-            this.txtTenCPU.Location = new System.Drawing.Point(167, 108);
+            this.txtTenCPU.Location = new System.Drawing.Point(144, 117);
             this.txtTenCPU.Name = "txtTenCPU";
             this.txtTenCPU.Size = new System.Drawing.Size(218, 22);
-            this.txtTenCPU.TabIndex = 62;
-            // 
-            // txtHangsanxuat
-            // 
-            this.txtHangsanxuat.Location = new System.Drawing.Point(167, 213);
-            this.txtHangsanxuat.Name = "txtHangsanxuat";
-            this.txtHangsanxuat.Size = new System.Drawing.Size(218, 22);
-            this.txtHangsanxuat.TabIndex = 61;
+            this.txtTenCPU.TabIndex = 82;
             // 
             // txtMacpu
             // 
-            this.txtMacpu.Location = new System.Drawing.Point(167, 69);
+            this.txtMacpu.Location = new System.Drawing.Point(144, 78);
             this.txtMacpu.Name = "txtMacpu";
             this.txtMacpu.Size = new System.Drawing.Size(218, 22);
-            this.txtMacpu.TabIndex = 60;
+            this.txtMacpu.TabIndex = 81;
             // 
             // btnThem
             // 
@@ -188,83 +204,69 @@ namespace BTL_nhom11_marketPC.Forms
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnThem.Image = global::BTL_nhom11_marketPC.Properties.Resources.add;
-            this.btnThem.Location = new System.Drawing.Point(53, 453);
+            this.btnThem.Location = new System.Drawing.Point(30, 462);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(108, 44);
-            this.btnThem.TabIndex = 59;
+            this.btnThem.TabIndex = 80;
             this.btnThem.Text = "Thêm";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThem.UseVisualStyleBackColor = false;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click_1);
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // dgvCPU
             // 
             this.dgvCPU.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCPU.Location = new System.Drawing.Point(53, 253);
+            this.dgvCPU.Location = new System.Drawing.Point(30, 262);
             this.dgvCPU.Name = "dgvCPU";
             this.dgvCPU.RowHeadersWidth = 51;
             this.dgvCPU.RowTemplate.Height = 24;
             this.dgvCPU.Size = new System.Drawing.Size(733, 185);
-            this.dgvCPU.TabIndex = 58;
+            this.dgvCPU.TabIndex = 79;
             this.dgvCPU.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCPU_CellClick);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(50, 111);
+            this.label4.Location = new System.Drawing.Point(27, 120);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 16);
-            this.label4.TabIndex = 57;
+            this.label4.TabIndex = 78;
             this.label4.Text = "Tên CPU";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(50, 216);
+            this.label3.Location = new System.Drawing.Point(27, 225);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 16);
-            this.label3.TabIndex = 56;
+            this.label3.TabIndex = 77;
             this.label3.Text = "Hãng sản xuất";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 75);
+            this.label2.Location = new System.Drawing.Point(27, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 16);
-            this.label2.TabIndex = 55;
+            this.label2.TabIndex = 76;
             this.label2.Text = "Mã CPU";
             // 
-            // label5
+            // label1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(50, 147);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 16);
-            this.label5.TabIndex = 69;
-            this.label5.Text = "Tốc Độ";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(52, 185);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 16);
-            this.label6.TabIndex = 72;
-            this.label6.Text = "Socket";
-            // 
-            // txtSocket
-            // 
-            this.txtSocket.Location = new System.Drawing.Point(167, 179);
-            this.txtSocket.Name = "txtSocket";
-            this.txtSocket.Size = new System.Drawing.Size(218, 22);
-            this.txtSocket.TabIndex = 73;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Netron", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(348, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 35);
+            this.label1.TabIndex = 75;
+            this.label1.Text = "CPU";
             // 
             // FrmCPU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 522);
+            this.ClientSize = new System.Drawing.Size(800, 524);
+            this.Controls.Add(this.cboHSX);
             this.Controls.Add(this.txtSocket);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtMota);
@@ -277,7 +279,6 @@ namespace BTL_nhom11_marketPC.Forms
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtTenCPU);
-            this.Controls.Add(this.txtHangsanxuat);
             this.Controls.Add(this.txtMacpu);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.dgvCPU);
@@ -296,9 +297,12 @@ namespace BTL_nhom11_marketPC.Forms
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboHSX;
+        private System.Windows.Forms.TextBox txtSocket;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtMota;
         private System.Windows.Forms.TextBox txtTocdo;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Button btnHuybo;
         private System.Windows.Forms.Button btnLuu;
@@ -306,15 +310,12 @@ namespace BTL_nhom11_marketPC.Forms
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtTenCPU;
-        private System.Windows.Forms.TextBox txtHangsanxuat;
         private System.Windows.Forms.TextBox txtMacpu;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dgvCPU;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtSocket;
+        private System.Windows.Forms.Label label1;
     }
 }

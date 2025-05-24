@@ -47,6 +47,7 @@ namespace BTL_nhom11_marketPC.Forms
             this.nhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nhàCungCấpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.khuyếnMãiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hãngSảnXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.giaoDịchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bánHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hóaĐơnBánToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +73,7 @@ namespace BTL_nhom11_marketPC.Forms
             this.thoátToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1585, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1585, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -82,7 +83,7 @@ namespace BTL_nhom11_marketPC.Forms
             this.máyTínhToolStripMenuItem,
             this.linhKiệnMáyToolStripMenuItem});
             this.danhMụcSảnPhẩmToolStripMenuItem.Name = "danhMụcSảnPhẩmToolStripMenuItem";
-            this.danhMụcSảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(158, 24);
+            this.danhMụcSảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(158, 26);
             this.danhMụcSảnPhẩmToolStripMenuItem.Text = "Danh mục sản phẩm";
             // 
             // máyTínhToolStripMenuItem
@@ -172,7 +173,8 @@ namespace BTL_nhom11_marketPC.Forms
             this.kháchHàngToolStripMenuItem,
             this.nhânViênToolStripMenuItem,
             this.nhàCungCấpToolStripMenuItem,
-            this.khuyếnMãiToolStripMenuItem});
+            this.khuyếnMãiToolStripMenuItem,
+            this.hãngSảnXuấtToolStripMenuItem});
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
             this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
             this.quảnLýToolStripMenuItem.Text = "Quản lý ";
@@ -180,26 +182,33 @@ namespace BTL_nhom11_marketPC.Forms
             // kháchHàngToolStripMenuItem
             // 
             this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
-            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
             this.kháchHàngToolStripMenuItem.Text = "Khách hàng";
             // 
             // nhânViênToolStripMenuItem
             // 
             this.nhânViênToolStripMenuItem.Name = "nhânViênToolStripMenuItem";
-            this.nhânViênToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.nhânViênToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
             this.nhânViênToolStripMenuItem.Text = "Nhân viên";
             // 
             // nhàCungCấpToolStripMenuItem
             // 
             this.nhàCungCấpToolStripMenuItem.Name = "nhàCungCấpToolStripMenuItem";
-            this.nhàCungCấpToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.nhàCungCấpToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
             this.nhàCungCấpToolStripMenuItem.Text = "Nhà cung cấp";
             // 
             // khuyếnMãiToolStripMenuItem
             // 
             this.khuyếnMãiToolStripMenuItem.Name = "khuyếnMãiToolStripMenuItem";
-            this.khuyếnMãiToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.khuyếnMãiToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
             this.khuyếnMãiToolStripMenuItem.Text = "Khuyến mãi";
+            // 
+            // hãngSảnXuấtToolStripMenuItem
+            // 
+            this.hãngSảnXuấtToolStripMenuItem.Name = "hãngSảnXuấtToolStripMenuItem";
+            this.hãngSảnXuấtToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.hãngSảnXuấtToolStripMenuItem.Text = "Hãng sản xuất";
+            this.hãngSảnXuấtToolStripMenuItem.Click += new System.EventHandler(this.hãngSảnXuấtToolStripMenuItem_Click);
             // 
             // giaoDịchToolStripMenuItem
             // 
@@ -276,9 +285,9 @@ namespace BTL_nhom11_marketPC.Forms
             // toolStrip1
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 30);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1585, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1585, 31);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -332,5 +341,6 @@ namespace BTL_nhom11_marketPC.Forms
         private System.Windows.Forms.ToolStripMenuItem thôngTinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thoátToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripMenuItem hãngSảnXuấtToolStripMenuItem;
     }
 }

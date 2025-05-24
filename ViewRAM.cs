@@ -10,5 +10,7 @@ namespace BTL_nhom11_marketPC.Views
     public interface IViewRAM
     {
         void UpdateRAMList(List<RAM> rams);
+        void UpdateHSXList(List<Manufacturer> manufacturers);
+        void ShowError(string message);
     }
 }

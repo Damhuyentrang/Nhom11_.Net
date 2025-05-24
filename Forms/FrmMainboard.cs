@@ -6,11 +6,13 @@ using BTL_nhom11_marketPC.Models;
 using BTL_nhom11_marketPC.Views;
 using BTL_nhom11_marketPC.Database.Repositories;
 
+
 namespace BTL_nhom11_marketPC.Forms
 {
     public partial class FrmMainboard : Form, IViewMainboard
     {
         private MainboardRepository repository;
+        private ManufacturerRepository manufacturerRepository;
         private Mainboard selectedMainboard;
         private PreMainbroad presenter;
         private bool _isEditing;
@@ -19,13 +21,15 @@ namespace BTL_nhom11_marketPC.Forms
         {
             InitializeComponent();
             repository = new MainboardRepository();
-            presenter = new PreMainbroad(this, repository);
+            manufacturerRepository = new ManufacturerRepository();
+            presenter = new PreMainbroad(this, repository, manufacturerRepository);
             dgvMainboard.CellClick += dgvMainboard_CellClick;
             LockTextBoxes(true);
         }
 
         private void FrmMainboard_Load(object sender, EventArgs e)
         {
+            presenter.LoadManufacturers();
             presenter.LoadMainboards();
         }
 
@@ -47,15 +51,31 @@ namespace BTL_nhom11_marketPC.Forms
             dgvMainboard.Columns["MaHSX"].Width = 100;
 
             dgvMainboard.ReadOnly = true;
-            // Hiển thị MaHSX trực tiếp
+
             dgvMainboard.CellFormatting += (s, e) =>
             {
                 if (e.ColumnIndex == dgvMainboard.Columns["MaHSX"].Index && e.RowIndex >= 0)
                 {
                     var mainboard = dgvMainboard.Rows[e.RowIndex].DataBoundItem as Mainboard;
-                    e.Value = mainboard?.MaHSX ?? ""; // Hiển thị MaHSX trực tiếp
+                    e.Value = mainboard?.MaHSX ?? "";
                 }
             };
+        }
+        public void UpdateHSXList(List<Manufacturer> manufacturers)
+        {
+            cboHSX.Items.Clear();
+            foreach (var manufacturer in manufacturers)
+            {
+                cboHSX.Items.Add(manufacturer.MaHSX);
+            }
+            if (cboHSX.Items.Count > 0)
+            {
+                cboHSX.SelectedIndex = 0; // Chọn mục đầu tiên nếu danh sách không rỗng
+            }
+        }
+        public void ShowError(string message)
+        {
+            MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void dgvMainboard_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -70,7 +90,7 @@ namespace BTL_nhom11_marketPC.Forms
                     txtTenmainboard.Text = selectedMainboard.TenMainboard ?? "";
                     txtSocket.Text = selectedMainboard.Socket ?? "";
                     txtMota.Text = selectedMainboard.Mota ?? "";
-                    txtHangsanxuat.Text = selectedMainboard.MaHSX ?? ""; // Lấy MaHSX trực tiếp
+                    cboHSX.Text = selectedMainboard.MaHSX ?? ""; // Lấy MaHSX trực tiếp
                 }
                 else
                 {
@@ -87,11 +107,11 @@ namespace BTL_nhom11_marketPC.Forms
 
         private void LockTextBoxes(bool isLocked)
         {
-            txtMamainboard.ReadOnly = isLocked;
+            txtMamainboard.ReadOnly = isLocked || _isEditing;
             txtTenmainboard.ReadOnly = isLocked;
             txtSocket.ReadOnly = isLocked;
             txtMota.ReadOnly = isLocked;
-            txtHangsanxuat.ReadOnly = isLocked;
+            cboHSX.Enabled = !isLocked;
         }
 
         private void ClearTextBoxes()
@@ -100,7 +120,7 @@ namespace BTL_nhom11_marketPC.Forms
             txtTenmainboard.Text = string.Empty;
             txtSocket.Text = string.Empty;
             txtMota.Text = string.Empty;
-            txtHangsanxuat.Text = string.Empty;
+            cboHSX.Text = string.Empty;
         }
 
         private void ResetValues()
@@ -112,20 +132,6 @@ namespace BTL_nhom11_marketPC.Forms
 
         private bool CheckTextBox()
         {
-            if (string.IsNullOrWhiteSpace(txtMamainboard.Text))
-            {
-                MessageBox.Show("Mã Mainboard không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMamainboard.Focus();
-                return false;
-            }
-
-            if (!txtMamainboard.Text.StartsWith("MB", StringComparison.OrdinalIgnoreCase))
-            {
-                MessageBox.Show("Mã Mainboard phải bắt đầu bằng 'MB'!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMamainboard.Focus();
-                return false;
-            }
-
             if (string.IsNullOrWhiteSpace(txtTenmainboard.Text))
             {
                 MessageBox.Show("Tên Mainboard không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -146,114 +152,19 @@ namespace BTL_nhom11_marketPC.Forms
                 txtMota.Focus();
                 return false;
             }
-
-            if (string.IsNullOrWhiteSpace(txtHangsanxuat.Text))
-            {
-                MessageBox.Show("Mã Hãng Sản Xuất không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtHangsanxuat.Focus();
-                return false;
-            }
-
-            if (!txtHangsanxuat.Text.StartsWith("HSX", StringComparison.OrdinalIgnoreCase))
-            {
-                MessageBox.Show("Mã Hãng Sản Xuất phải bắt đầu bằng 'HSX'!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtHangsanxuat.Focus();
-                return false;
-            }
-
-            if (txtMamainboard.Text.Length > 50)
-            {
-                MessageBox.Show("Mã Mainboard không được vượt quá 50 ký tự!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMamainboard.Focus();
-                return false;
-            }
             return true;
-        }
-
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                BTL_nhom11_marketPC.Database.DatabaseContext.CloseConnection();
-                Application.Exit();
-            }
-        }
-
-        private void btnThem_Click(object sender, EventArgs e)
+        }  
+        private void btnThem_Click_1(object sender, EventArgs e)
         {
             _isEditing = false;
             ClearTextBoxes();
             LockTextBoxes(false);
-            txtMamainboard.Focus();
+            txtTenmainboard.Focus();
+            string newMaMainboard = repository.GetNextMaMainboard();
+            txtMamainboard.Text = newMaMainboard;
         }
 
-        private void btnHuybo_Click(object sender, EventArgs e)
-        {
-            ResetValues();
-        }
-
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
-            if (!CheckTextBox())
-            {
-                return;
-            }
-
-            if (!repository.CheckForeignKeyExists("HangSanXuat", "MaHSX", txtHangsanxuat.Text))
-            {
-                MessageBox.Show("Mã Hãng Sản Xuất không tồn tại trong bảng HangSanXuat!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtHangsanxuat.Focus();
-                return;
-            }
-
-            if (MessageBox.Show("Bạn có chắc chắn muốn lưu?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
-            {
-                return;
-            }
-
-            Mainboard mainboard = new Mainboard
-            {
-                MaMainboard = txtMamainboard.Text.Trim(), // Loại bỏ khoảng trắng thừa
-                TenMainboard = txtTenmainboard.Text.Trim(), // Loại bỏ khoảng trắng thừa
-                Socket = txtSocket.Text.Trim(),
-                Mota = txtMota.Text.Trim(),
-                MaHSX = txtHangsanxuat.Text.Trim() // Gán MaHSX trực tiếp từ text box
-            };
-
-            try
-            {
-                if (!_isEditing)
-                {
-                    if (repository.CheckMainboardExists(mainboard.MaMainboard))
-                    {
-                        MessageBox.Show("Mã Mainboard đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    repository.Add(mainboard);
-                    MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    if (selectedMainboard != null && selectedMainboard.MaMainboard != mainboard.MaMainboard && repository.CheckMainboardExists(mainboard.MaMainboard))
-                    {
-                        MessageBox.Show("Mã Mainboard đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    repository.Update(mainboard);
-                    MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
-                presenter.LoadMainboards();
-                ResetValues();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi lưu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnSua_Click(object sender, EventArgs e)
+        private void btnSua_Click_1(object sender, EventArgs e)
         {
             if (selectedMainboard == null || string.IsNullOrWhiteSpace(selectedMainboard.MaMainboard))
             {
@@ -263,10 +174,11 @@ namespace BTL_nhom11_marketPC.Forms
 
             _isEditing = true;
             LockTextBoxes(false);
-            txtMamainboard.Focus();
+            txtMamainboard.ReadOnly = true; // Không cho phép sửa MaMainboard
+            txtTenmainboard.Focus();
         }
 
-        private void btnXoa_Click(object sender, EventArgs e)
+        private void btnXoa_Click_1(object sender, EventArgs e)
         {
             if (selectedMainboard == null || string.IsNullOrWhiteSpace(selectedMainboard.MaMainboard))
             {
@@ -289,6 +201,64 @@ namespace BTL_nhom11_marketPC.Forms
                 {
                     MessageBox.Show($"Lỗi khi xóa: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void btnLuu_Click_1(object sender, EventArgs e)
+        {
+            if (!CheckTextBox())
+            {
+                return;
+            }
+
+            if (MessageBox.Show("Bạn có chắc chắn muốn lưu?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+            {
+                return;
+            }
+
+            Mainboard mainboard = new Mainboard
+            {
+                MaMainboard = txtMamainboard.Text.Trim(), // Loại bỏ khoảng trắng thừa
+                TenMainboard = txtTenmainboard.Text.Trim(), // Loại bỏ khoảng trắng thừa
+                Socket = txtSocket.Text.Trim(),
+                Mota = txtMota.Text.Trim(),
+                MaHSX = cboHSX.Text // Gán MaHSX trực tiếp từ text box
+            };
+
+            try
+            {
+                if (!_isEditing)
+                {
+                    repository.Add(mainboard);
+                    MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    repository.Update(mainboard);
+                    MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                presenter.LoadMainboards();
+                ResetValues();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lưu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnHuybo_Click_1(object sender, EventArgs e)
+        {
+            ResetValues();
+        }
+
+        private void btnThoat_Click_1(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                BTL_nhom11_marketPC.Database.DatabaseContext.CloseConnection();
+                Application.Exit();
             }
         }
     }
