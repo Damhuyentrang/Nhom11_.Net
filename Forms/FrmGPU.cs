@@ -15,6 +15,12 @@ namespace BTL_nhom11_marketPC.Forms
         public FrmGPU()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void FrmGPU_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -15,6 +15,12 @@ namespace BTL_nhom11_marketPC.Forms
         public FrmCPU()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void FrmCPU_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

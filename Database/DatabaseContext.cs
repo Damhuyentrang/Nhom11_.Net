@@ -10,7 +10,7 @@ namespace BTL_nhom11_marketPC.Database
     {
         private static SqlConnection conn;
 
-        private static string connStr = @"Data Source=.\SQLEXPRESS;Initial Catalog=TenCSDL;Integrated Security=True;";
+        private static string connStr = @"Data Source=hung\HUNG;Initial Catalog=CuaHangPhanMemMayTinh;Integrated Security=True;Encrypt=False;TrustServerCertificate=True";
 
         public static SqlConnection GetConnection()
         {
@@ -31,5 +31,9 @@ namespace BTL_nhom11_marketPC.Database
                 conn = null;
             }
         }
+        private static readonly RelationshipMapper _relationshipMapper = new RelationshipMapper();
+        public static RelationshipMapper RelationshipMapper => _relationshipMapper;
+
+
     }
 }

@@ -8,3 +8,107 @@ D:\ki2nam3\.net\BTL_nhom11_marketPC\bin\Debug\BTL_nhom11_marketPC.exe
 D:\ki2nam3\.net\BTL_nhom11_marketPC\bin\Debug\BTL_nhom11_marketPC.pdb
 D:\ki2nam3\.net\BTL_nhom11_marketPC\obj\Debug\BTL_nhom11_marketPC.exe
 D:\ki2nam3\.net\BTL_nhom11_marketPC\obj\Debug\BTL_nhom11_marketPC.pdb
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.csproj.AssemblyReference.cache
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmMainMenu.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Properties.Resources.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.csproj.GenerateResource.cache
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.csproj.CoreCompileInputs.cache
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.exe
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.pdb
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\BTL_nhom11_marketPC.exe.config
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\BTL_nhom11_marketPC.exe
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\BTL_nhom11_marketPC.pdb
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\EntityFramework.dll
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\EntityFramework.SqlServer.dll
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\Microsoft.Data.Tools.Components.dll
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\EntityFramework.xml
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\EntityFramework.SqlServer.xml
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmMainboard.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom.9FBC175A.Up2Date
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmCPU.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmGPU.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmRAM.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmCustomer.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmEmployee.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmGraphicsCard.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmHardDrive.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmComputer.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmComputerType.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmSalesInvoice.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmSalesRevenue.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmSalesInvoiceDetail.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.csproj.ResolveComReference.cache
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\LiveCharts.dll
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\LiveCharts.WinForms.dll
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\LiveCharts.Wpf.dll
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\LiveCharts.pdb
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\LiveCharts.xml
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\LiveCharts.WinForms.pdb
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\LiveCharts.WinForms.xml
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\LiveCharts.Wpf.pdb
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\LiveCharts.Wpf.xml
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\BCrypt.Net-Next.dll
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\System.Buffers.dll
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\System.Memory.dll
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\System.Numerics.Vectors.dll
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\BCrypt.Net-Next.xml
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\System.Buffers.xml
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\System.Memory.xml
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\System.Numerics.Vectors.xml
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmLogin.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmRegister.resources
+D:\Kì 2 năm 3\Lập trình NET\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmUser.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\BTL_nhom11_marketPC.exe.config
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\BTL_nhom11_marketPC.exe
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\BTL_nhom11_marketPC.pdb
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\BCrypt.Net-Next.dll
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\EntityFramework.dll
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\EntityFramework.SqlServer.dll
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\LiveCharts.dll
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\LiveCharts.WinForms.dll
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\LiveCharts.Wpf.dll
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\Microsoft.Data.Tools.Components.dll
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\System.Buffers.dll
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\System.Memory.dll
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\System.Numerics.Vectors.dll
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\BCrypt.Net-Next.xml
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\EntityFramework.xml
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\EntityFramework.SqlServer.xml
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\LiveCharts.pdb
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\LiveCharts.xml
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\LiveCharts.WinForms.pdb
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\LiveCharts.WinForms.xml
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\LiveCharts.Wpf.pdb
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\LiveCharts.Wpf.xml
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\System.Buffers.xml
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\System.Memory.xml
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\System.Numerics.Vectors.xml
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.csproj.AssemblyReference.cache
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.csproj.ResolveComReference.cache
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmComputer.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmComputerType.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmCPU.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmCustomer.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmEmployee.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmGPU.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmGraphicsCard.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmHardDrive.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmLogin.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmMainboard.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmMainMenu.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmRAM.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmRegister.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmSalesInvoice.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmSalesInvoiceDetail.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmSalesRevenue.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Forms.FrmUser.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.Properties.Resources.resources
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.csproj.GenerateResource.cache
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.csproj.CoreCompileInputs.cache
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom.9FBC175A.Up2Date
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.exe
+D:\31_NguyenVietHung\Nhom11_.Net (1)\Nhom11_.Net\obj\Debug\BTL_nhom11_marketPC.pdb

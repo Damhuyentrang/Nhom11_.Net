@@ -12,9 +12,18 @@ namespace BTL_nhom11_marketPC.Forms
 {
     public partial class FrmMainboard : Form
     {
+
+        
         public FrmMainboard()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;  
         }
+
+        private void FrmMainboard_Load(object sender, EventArgs e)
+        {
+
+        }
+       
     }
 }

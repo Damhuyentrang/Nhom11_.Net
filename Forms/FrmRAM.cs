@@ -15,6 +15,12 @@ namespace BTL_nhom11_marketPC.Forms
         public FrmRAM()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void FrmRAM_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
