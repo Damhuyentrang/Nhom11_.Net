@@ -3,15 +3,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BTL_nhom11_marketPC.Models
 {
-    public class CPU
+    public class RAM
     {
         [Key]
-        public string MaCPU { get; set; }
+        public string MaRAM { get; set; }
 
         [Required]
-        public string TenCPU { get; set; }
-        public string Tocdo { get; set; }
-        public string Socket { get; set; }
+        public string TenRAM { get; set; }
+        public int Bus { get; set; }
+        public int Dungluong { get; set; }
 
         public string Mota { get; set; }
 
