@@ -1,16 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BTL_nhom11_marketPC.Models
 {
-    public class CPU
+    public class Mainboard
     {
         [Key]
-        public string MaCPU { get; set; }
+        public string MaMainboard { get; set; }
 
         [Required]
-        public string TenCPU { get; set; }
-        public string Tocdo { get; set; }
+        public string TenMainboard { get; set; }
+
         public string Socket { get; set; }
 
         public string Mota { get; set; }
